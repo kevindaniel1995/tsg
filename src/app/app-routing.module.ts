@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { PagesComponent } from './pages/pages.component';
 import { AnalyticsComponent } from './DemoPages/Dashboards/analytics/analytics.component';
-import { ComercialModule } from './pages/comercial/comercial.module';
+import { SessionGuard } from './session.guard';
+import { PageNotFoundComponent } from './shared/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'login', pathMatch: 'full', component: LoginComponent },
 
   {
-    path: '', component: PagesComponent, children: [
+    path: '', component: PagesComponent, canActivate: [SessionGuard], children: [
       { path: '', component: AnalyticsComponent },
       {
         path: 'configuraciones',
@@ -21,7 +22,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

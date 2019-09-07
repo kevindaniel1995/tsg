@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 // BOOTSTRAP COMPONENTS
@@ -15,6 +15,7 @@ import { AnalyticsComponent } from './DemoPages/Dashboards/analytics/analytics.c
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { HomeComponent } from './pages/home/home.component';
+import { HttpInterceptorService } from './http-interceptor.service';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { HomeComponent } from './pages/home/home.component';
     AngularFontAwesomeModule 
     
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

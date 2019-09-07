@@ -29,9 +29,8 @@ export class LoginComponent implements OnInit {
   public onLogin() {
     this.spinnerService.show();
     this.authentication.login$(this.form.value).subscribe(data => {
-      this.authentication.setKey('co', data);
-      this.spinnerService.hide();
-      this.router.navigate(['home']);
+      this.authentication.setKey('co', data);      
+      this.router.navigate(['']);
     });
   }
 }

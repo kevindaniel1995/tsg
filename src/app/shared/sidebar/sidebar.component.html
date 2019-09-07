@@ -26,7 +26,7 @@
 
                 <ngb-panel [id]="menuLvl2.name" *ngFor="let menuLvl2 of menu.children; let i = index">
                   <ng-template ngbPanelHeader >
-                    <button ngbPanelToggle class="vsm-link" (click)="navigate( menuLvl2 )">
+                    <button ngbPanelToggle class="vsm-link" >
                       <i class="vsm-icon pe-7s-rocket"></i>
                       <span class="vsm-title"> {{ menuLvl2.name }} </span>
                       <i class="vsm-arrow"></i>

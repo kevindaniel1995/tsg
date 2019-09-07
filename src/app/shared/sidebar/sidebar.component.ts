@@ -49,8 +49,7 @@ export class SidebarComponent implements OnInit {
 
     this.sharedService.getSharedData().subscribe(data => {
       this.index = 0;
-      this.menus = data.data;
-      this.spinnerService.hide();
+      this.menus = data.data;      
     })
 
     this.menus = this.authenticationService.getMenu();

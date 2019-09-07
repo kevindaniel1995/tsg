@@ -11,6 +11,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesComponent } from '../pages/pages.component';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -24,7 +25,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PageTitleComponent,
     SidebarComponent,
     UserBoxComponent,
-    PagesComponent
+    PagesComponent,
+    PageNotFoundComponent
   ],
   exports: [
     FooterComponent,
