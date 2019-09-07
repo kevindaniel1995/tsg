@@ -1,0 +1,56 @@
+<div [class]="'app-sidebar sidebar-shadow default'" (mouseover)="sidebarHover()" (mouseout)="sidebarHover()">
+  <div class="app-header__logo">
+    <div class="logo-src"></div>
+    <div class="header__pane ml-auto">
+      <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
+        [ngClass]="{'is-active' : globals.toggleSidebar}" (click)="toggleSidebar()">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="app-sidebar-content">
+    <div class="app-sidebar-scroll">
+      <perfect-scrollbar [autoPropagation]="true">
+        <div class="v-sidebar-menu vsm-default">
+          <div class="vsm-list">
+            <ngb-accordion [destroyOnHide]="false" [closeOthers]="true" [activeIds]="extraParameter">
+              <div *ngFor="let menu of menus">
+
+                <ngb-panel>
+                  <ng-template ngbPanelHeader>
+                    <div class="vsm-header"> {{ menu.name }}</div>
+                  </ng-template>
+                </ngb-panel>
+
+                <ngb-panel [id]="menuLvl2.name" *ngFor="let menuLvl2 of menu.children; let i = index">
+                  <ng-template ngbPanelHeader >
+                    <button ngbPanelToggle class="vsm-link" (click)="navigate( menuLvl2 )">
+                      <i class="vsm-icon pe-7s-rocket"></i>
+                      <span class="vsm-title"> {{ menuLvl2.name }} </span>
+                      <i class="vsm-arrow"></i>
+                    </button>
+                  </ng-template>
+
+                  <ng-template ngbPanelContent>
+                    <div class="vsm-dropdown" *ngFor="let menuLvl3 of menuLvl2.children">
+                      <div class="vsm-list">
+                        <div class="vsm-item">
+                          <a routerLinkActive="active-item" class="vsm-link" (click)="navigate( menuLvl3 )">
+                            <span class="vsm-title"> {{ menuLvl3.name }} </span></a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </ng-template>
+
+                </ngb-panel>
+              </div>
+            </ngb-accordion>          
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+  </div>
+</div>

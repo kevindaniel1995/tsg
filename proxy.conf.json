@@ -1,0 +1,9 @@
+{
+    "/api/": {
+        "target": "http://was.tsgroup.com.co:9083/CalendarioMovil/service/",
+        "secure": false,
+        "pathRewrite": {
+            "^/api/": ""
+        }
+    }
+}
